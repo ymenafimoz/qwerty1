@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Продажа Билетов</title>
+    <link rel="stylesheet" type="text/css" href="head.css"/>
+    <link rel="stylesheet" type="text/css" href="font/head.css"/>
+</head>
+<body>
+    <header class="container-field">
+        <div class="container d-flex">
+            <img src="логотип кинотеатра.jpg" width="50" height="50" alt="logo" />
+            
+            <nav class="menu">
+                <a class="active" href="trpost.html">Каталог</a>
+                <a href="trpoaboutus.html">О нас</a>
+                <a href="trpokorzina.html">Корзина</a>
+                <a href="trpocontacs.html">Контакты</a>
+            </nav>
+            <div class="formauthorization">
+                <button class="profile" id="profileButton" onclick="document.location='trpoprofile.html'" style="display: none;">Личный кабинет</button>
+                <button class="registration" id="registrationButton" onclick="document.location='trporeg.html'" style="display: inline;">Зарегистрироваться</button>
+                <button class="authorization" id="authorizationButton" onclick="document.location='trpoaut.html'" style="display: inline;">Войти</button>
+            </div>
+        </div>
+    </header>
+    <div class="fon">
+
+        <div id="sessionModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Выберите время сеанса</h2>
+                <select id="sessionTime">
+                    <option value="10:00">10:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="20:00">20:00</option>
+                </select>
+                <h2>Выберите дату</h2>
+                <select id="modelNumber">
+                    <option value="01.01">01.01</option>
+                    <option value="02.01">02.01</option>
+                    <option value="03.01">03.01</option>
+                </select>
+                <h2>Выберите место</h2>
+                <select id="sessionTime">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <p class="price">Цена: 1000 руб</p>
+                <button onclick="confirmBooking()">Подтвердить</button>
+            </div>
+        </div>
+        
+        <p class="afisha">Афиша на сегодня</p>
+        <div class="menu1">
+
+            <div class="catalog">
+                <img class="img_g" src="джокер.jpg" id="bike-image" width="350" height="500"/>
+                <p class="img__description" id="bike-name">Джокер: Безумие на двоих</p>
+                <button class="bilet" onclick="bookTestRide('Джокер: Безумие на двоих', '/img/moto1.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog1">
+                <img class="img_g" src="траесформеры.jpg"/>
+                <p class="img__description">Трансформеры: Начало</p>
+                <button class="bilet" onclick="bookTestRide('Трансформеры: Начало', '/img/moto2.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog2">
+                <img class="img_g" src="Огниво.jpg"/>
+                <p class="img__description">Предпоказ фильма «Огниво»</p>
+                <button class="bilet" onclick="bookTestRide('Предпоказ мультфильма «Лес чудес»', '/img/moto3.jpg')">Забронировать билет</button>
+            </div>
+        </div>
+        <div class="menu2">
+            <div class="catalog3">
+                <img class="img_g" src="субстанция.jpg"/>
+                <p class="img__description">Субстанция</p>
+                <button class="bilet" onclick="bookTestRide('Субстанция', '/img/moto4.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog4">
+                <img class="img_g" src="Дикий робот.jpg"/>
+                <p class="img__description">Дикий робот</p>
+                <button class="bilet" onclick="bookTestRide('Дикий робот', '/img/moto5.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog5">
+                <img class="img_g" src="Битлджус Битлджус.jpg"/>
+                <p class="img__description">Битлджус Битлджус</p>
+                <button class="bilet" onclick="bookTestRide('Битлджус Битлджус', '/img/moto6.jpg')">Забронировать билет</button>
+            </div>
+        </div>
+        <div class="menu3">
+            <div class="catalog6">
+                <img class="img_g" src="Граф Монте-Кристо.jpg"/>
+                <p class="img__description">Граф Монте-Кристо</p>
+                <button class="bilet" onclick="bookTestRide('Граф Монте-Кристо', '/img/moto7.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog7">
+                <img class="img_g" src="Подземная бездна.jpg"/>
+                <p class="img__description">Подземная бездна</p>
+                <button class="bilet" onclick="bookTestRide('Подземная бездна', '/img/moto8.jpg')">Забронировать билет</button>
+            </div>
+            <div class="catalog8">
+                <img class="img_g" src="/img/moto9.jpg"/>
+                <p class="img__description">Моана2</p>
+                <button class="bilet" onclick="bookTestRide('Моана2', '/img/moto9.jpg')">Забронировать билет</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="d-flex2">
+            <div class="leftcol">
+                <div class="image">
+                    <a href="https://www.instagram.com/_kbip.official_/" target="_blank">
+                        <img class="imgg" src="icons8-instagram-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+                <div class="image">
+                    <a href="https://web.telegram.org/k/#@kbpbrest" target="_blank">
+                        <img class="imgg" src="icons8-логотип-telegram-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+                <div class="image">
+                    <a href="https://vk.com/kbpby?ysclid=m49yfi7rg6293926969" target="_blank">
+                        <img class="imgg" src="icons8-vkontakte-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+            </div>
+            <div class="rightcol">
+                <div class="font2">
+                    <p>Телефон:+375(29)456-78-90</p>
+                    <p>Email:info@kino_shop.com</p>
+                    <p>Адрес:ул.крутая 10,г.Кипр</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function updateUI() {
+            const username = localStorage.getItem('username');
+            
+            if (username) {
+                document.getElementById('profileButton').style.display = 'inline';
+                document.getElementById('registrationButton').style.display = 'none';
+                document.getElementById('authorizationButton').style.display = 'none';
+            } else {
+                document.getElementById('profileButton').style.display = 'none';
+                document.getElementById('registrationButton').style.display = 'inline';
+                document.getElementById('authorizationButton').style.display = 'inline';
+            }
+        }
+        function bookTestRide(bikeName, bikeImage) {
+            const username = localStorage.getItem('username');
+            
+            if (!username) {
+                alert("Пожалуйста, войдите в систему, чтобы забронировать билет.");
+                window.location.href = 'trpoaut.html'; // Перенаправляем на страницу входа
+                return;
+            }
+
+            document.getElementById('sessionModal').style.display = 'block';
+            
+            window.selectedBikeData = {
+                name: bikeName,
+                image: bikeImage,
+                price: 100000 // Добавлено значение цены
+            };
+        }
+
+        function closeModal() {
+            document.getElementById('sessionModal').style.display = 'none';
+        }
+
+        function confirmBooking() {
+            const sessionTime = document.getElementById('sessionTime').value;
+            const modelNumber = document.getElementById('modelNumber').value;
+
+            const bikeData = {
+                ...window.selectedBikeData,
+                time: sessionTime,
+                model: modelNumber,
+                totalPrice: window.selectedBikeData.price
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(bikeData);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            closeModal();
+            window.location.href = 'trpomoto.html'; // Перенаправляем на страницу подтверждения
+        }
+        document.addEventListener('DOMContentLoaded', updateUI);
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Продажа Билетов</title>
+    <link rel="stylesheet" type="text/css" href="head.css"/>
+    <link rel="stylesheet" type="text/css" href="font/head.css"/>
+</head>
+<body>
+    <header class="container-field">
+        <div class="container d-flex">
+            <img src="логотип кинотеатра.jpg" width="50" height="50" alt="logo" />
+            
+            <nav class="menu">
+                <a href="trpost.html">Каталог</a>
+                <a href="trpoaboutus.html">О нас</a>
+                <a class="active" href="trpokorzina.html">Корзина</a>
+                <a href="trpocontacs.html">Контакты</a>
+            </nav>
+
+            <div class="formauthorization">
+                <button class="profile" id="profileButton" onclick="document.location='trpoprofile.html'" style="display: none;">Личный кабинет</button>
+                <button class="registration" id="registrationButton" onclick="document.location='trporeg.html'" style="display: inline;">Зарегистрироваться</button>
+                <button class="authorization" id="authorizationButton" onclick="document.location='trpoaut.html'" style="display: inline;">Войти</button>
+            </div>
+        </div>
+    </header>
+    <div class="fon">
+        <h1>Корзина:</h1>
+        <div class="cart">
+            <h2 id="textCart"></h2>
+            <div id="cartItems"></div>
+            <h3 id="totalCost" style="margin-top: 20px;"></h3>
+            <input type="email" id="emailInput" placeholder="Введите ваш номер карты" required />
+            <button id="clearCartButton">Очистить корзину</button> 
+            <button id="sendButton">Оплатить</button> 
+        </div>   
+    </div>
+    <footer class="footer">
+        <div class="d-flex2">
+            <div class="leftcol">
+                <div class="image">
+                    <a href="https://www.instagram.com/_kbip.official_/" target="_blank">
+                        <img class="imgg" src="icons8-instagram-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+                <div class="image">
+                    <a href="https://web.telegram.org/k/#@kbpbrest" target="_blank">
+                        <img class="imgg" src="icons8-логотип-telegram-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+                <div class="image">
+                    <a href="https://vk.com/kbpby?ysclid=m49yfi7rg6293926969" target="_blank">
+                        <img class="imgg" src="icons8-vkontakte-96.webp" width="90px" height="90px">
+                    </a>              
+                </div>
+            </div>
+            <div class="rightcol">
+                <div class="font2">
+                    <p>Телефон:+375(29)456-78-90</p>
+                    <p>Email:info@kino_shop.com</p>
+                    <p>Адрес:ул.крутая 10,г.Кипр</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalCost = 0;
+
+            if (cart.length === 0) {
+                document.getElementById('textCart').innerText = 'Корзина пустая';
+                cartItemsContainer.innerHTML = '';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" width="100" height="150">
+                    <p>${item.name}</p>
+                    <p>Дата: ${item.model}</p>
+                    <p>Цена: ${item.price} руб</p>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                totalCost += item.price;
+            });
+
+            const totalCostElement = document.createElement('h2');
+            totalCostElement.innerText = `Общая стоимость: ${totalCost} руб`;
+            cartItemsContainer.appendChild(totalCostElement);
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            updateCartUI();
+        }
+
+        document.getElementById('clearCartButton').addEventListener('click', clearCart);
+
+        document.addEventListener('DOMContentLoaded', function() {
+    updateCartUI();
+    updateUI();
+
+    document.getElementById('sendButton').addEventListener('click', function() {
+        const email = document.getElementById('emailInput').value;
+
+        if (email) {
+            // Логика для обработки оплаты
+            alert('Оплата успешна!');
+        } else {
+            alert('Пожалуйста, введите ваш номер карты.');
+        }
+    });
+});
+
+
+        document.addEventListener('DOMContentLoaded', updateCartUI);
+        
+        document.addEventListener('DOMContentLoaded', updateUI);
+        function updateUI() {
+            const username = localStorage.getItem('username');
+            const password = localStorage.getItem('password');
+            if (username && password) {
+                document.getElementById('profileButton').style.display = 'inline';
+                document.getElementById('registrationButton').style.display = 'none';
+                document.getElementById('authorizationButton').style.display = 'none';
+            }
+        }
+        (function(){
+           
+        })();
+    </script>
+</body>
+</html>
